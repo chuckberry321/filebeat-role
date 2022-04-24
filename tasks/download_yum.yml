@@ -3,6 +3,7 @@
   get_url:
     url: "https://mirrors.huaweicloud.com/filebeat/{{ filebeat_version }}/filebeat-{{ filebeat_version }}-x86_64.rpm"
     dest: "files/filebeat-{{ filebeat_version }}-x86_64.rpm"
+    validate_certs: false
   delegate_to: localhost
   register: download_filebeat
   until: download_filebeat is succeeded
@@ -10,5 +11,5 @@
 - name: Copy Filebeat to manage host
   copy:
     src: "files/filebeat-{{ filebeat_version }}-x86_64.rpm"
-    mode: 0644
+    mode: 0755
     dest: "/tmp/filebeat-{{ filebeat_version }}-x86_64.rpm"

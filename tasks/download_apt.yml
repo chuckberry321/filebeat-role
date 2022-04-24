@@ -3,6 +3,7 @@
   get_url:
     url: "https://mirrors.huaweicloud.com/filebeat/{{ filebeat_version }}/filebeat-{{ filebeat_version }}-amd64.deb"
     dest: "files/filebeat-{{ filebeat_version }}-amd64.deb"
+    validate_certs: false
   delegate_to: localhost
   register: download_filebeat
   until: download_filebeat is succeeded
